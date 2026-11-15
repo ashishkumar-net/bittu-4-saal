@@ -1,0 +1,370 @@
+<body>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div id="sparkles" aria-hidden="true"></div>
+<div id="progress" aria-hidden="true"></div>
+
+<div class="topbar">
+  <div class="theme-dots" role="group" aria-label="Theme">
+    <button class="dot" data-t="midnight" aria-label="Midnight Rose Gold"></button>
+    <button class="dot" data-t="velvet" aria-label="Royal Velvet Maroon"></button>
+    <button class="dot" data-t="aurora" aria-label="Starlight Aurora"></button>
+  </div>
+</div>
+
+<div id="enter">
+  <div>
+    <svg class="heart" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 28C-4 16 3 3 11 6c3 1 4 4 5 6 1-2 2-5 5-6 8-3 15 10-5 22z"/></svg>
+    <h2>For Alka —<br />Tap to Enter Our 4-Year World ❤️</h2>
+    <p>Bittu, yahan sab kuch tumhare liye hai.<br />Gaana bhi, yaadein bhi, aur ek chhoti si dua.</p>
+    <button class="btn enter-btn" id="enterBtn">Enter our world ❤️</button>
+    <p class="tiny">best with sound · headphones recommended</p>
+  </div>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-halo"></div>
+    <div>
+      <span class="eyebrow">ashish &amp; bittu · 4 saal · ek pavitr bandhan</span>
+      <h1>4 Saal,<br /><span style="font-style:italic;color:var(--ink-dim)">Anmol Yaadein,</span><span class="grad">Ek Pavitr Bandhan.</span></h1>
+      <p class="names">Sir Ashish &amp; Alka (Bittu)</p>
+      <p class="quote">“Mere mehboob qayamat hogi, aaj ruswa teri galiyon mein mohabbat hogi…”</p>
+      <p class="sub">chaar saal · anginat yaadein · ek hi dil</p>
+      <div class="counter" id="counter" aria-label="Together since">
+        <div><b id="cD">0</b><span>din</span></div>
+        <div><b id="cH">0</b><span>ghante</span></div>
+        <div><b id="cM">0</b><span>min</span></div>
+        <div><b id="cS">0</b><span>sec</span></div>
+      </div>
+      <p class="sub" style="margin-top:12px">hamara safar · <span id="sinceDate">—</span></p>
+      <div class="hero-cta">
+        <a class="btn" href="#gallery">Yaadon ki gallery</a>
+        <a class="btn ghost" href="#shayari">Shayari vault 🕊️</a>
+      </div>
+    </div>
+    <span class="scroll-hint">dheere se scroll karo</span>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section" id="gallery">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow">71 yaadein · 71 gaane · ek hi dil</span>
+        <h2 class="h2">Yaadon Ki <em>Gallery</em></h2>
+        <p class="lead">Har photo ka apna gaana hai — photo badlo, gaana khud badal jayega. Play, mute, next-previous, grid, movie mode aur favourites — sab yahin.</p>
+      </div>
+
+      <div style="margin-top:28px">
+        <div class="stage">
+          <div class="photo-wrap">
+            <img id="gImg" alt="Sir Ashish & Alka ki yaad" loading="eager" />
+            <div class="scrim"></div>
+            <div class="topline">
+              <span class="pill" id="gCount">Yaad 01 · 1/71</span>
+              <button class="pill" id="gGridBtn">▦ grid</button>
+            </div>
+            <div class="meta">
+              <div class="status"><span class="bars" id="gBars"><i></i><i></i><i></i><i></i></span><span id="gStatus">tap play</span></div>
+              <p class="song" id="gSong">—</p>
+              <p class="track-line" id="gTrack">Track 01 / 71</p>
+              <p class="caption" id="gCaption"></p>
+              <div class="controls">
+                <button class="play-btn" id="gPlay" aria-label="Play/Pause"></button>
+                <button class="icon-btn" id="gPrev" aria-label="Previous">❮</button>
+                <button class="icon-btn" id="gNext" aria-label="Next">❯</button>
+                <button class="icon-btn" id="gMute" aria-label="Mute">🔊</button>
+                <button class="icon-btn" id="gFav" aria-label="Favourite">♡</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-tools">
+          <button class="btn small" id="movieBtn">🎬 Play Cinematic Movie</button>
+          <button class="btn ghost small" id="randomBtn">🎲 Random memory</button>
+          <button class="btn ghost small" id="favFilterBtn">♡ Favourites</button>
+          <button class="btn ghost small" id="gridBtn2">▦ All 71</button>
+        </div>
+
+        <div class="song-jump">
+          <span class="sj-icon" aria-hidden="true">♪</span>
+          <input id="songSearch" type="search" placeholder="Gaana dhoondo… (jaise: Channa, Tum Hi)" autocomplete="off" aria-label="Search song by name" />
+          <button class="sj-clear" id="songClear" type="button" aria-label="Clear search" hidden>✕</button>
+          <div class="sj-results" id="songResults" role="listbox" hidden></div>
+        </div>
+
+        <div class="strip" id="strip" aria-label="Quick strip"></div>
+        <p class="note">photos github se live load hoti hain · photo na mile to rose-gold fallback</p>
+
+        <details class="mp3-help">
+          <summary>🎵 Poore gaane add karna hai? (30-second preview ki jagah)</summary>
+          <p>Site ke folder mein ek <code>mp3</code> folder banao aur gaane <code>01.mp3</code> se <code>71.mp3</code> tak naam se daal do — track number wahi hai jo photo ke neeche dikhta hai. Jis track ki file milegi, wahan poora gaana bajega (bar mein <b>full song</b> likha aayega); jahan file nahi hogi wahan 30-second iTunes preview, aur wo bhi na mile to soft piano.</p>
+          <p>Har file ka naam badalna nahi hai — sirf number se naam rakho. Kisi ek track ka alag naam rakhna ho to <code>index.html</code> mein <code>SONG_FILES</code> ke andar likh do. Poori list <code>mp3/GAANE-KI-LIST.md</code> mein hai.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section" id="story">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow">hamara safar · 4 saal</span>
+        <h2 class="h2">Ek Kahani, <em>Chaar Saal</em></h2>
+        <p class="lead">Pehli mulaqat se lekar aaj tak — har padav jahan hum dono the.</p>
+      </div>
+      <div class="timeline" id="timeline"></div>
+
+      <div class="center" style="margin-top:64px">
+        <span class="eyebrow">our places · dil ka naksha</span>
+        <h2 class="h2">Hamari <em>Jagahyein</em></h2>
+        <p class="lead">Kashi ke ghat, Sonbhadra ki mitti, Obra ki hawa, Dala ki pahadiyan — pin par tap karo.</p>
+      </div>
+      <div class="glass map" style="margin-top:20px">
+        <div class="grid-lines"></div>
+        <button class="pin" style="left:26%;top:34%" data-place="0"><b></b>Kashi</button>
+        <button class="pin" style="left:58%;top:26%" data-place="1"><b></b>Sonbhadra</button>
+        <button class="pin" style="left:74%;top:58%" data-place="2"><b></b>Obra</button>
+        <button class="pin" style="left:42%;top:70%" data-place="3"><b></b>Dala</button>
+      </div>
+      <div class="map-note" id="placeNote"><h4>Kashi · Varanasi</h4><p>Ghat ki seedhiyan, mandir ki ghantiyaan, aur tumhare saath ki chup-chaap dua.</p></div>
+
+      <div class="center" style="margin-top:64px">
+        <span class="eyebrow">our firsts</span>
+        <h2 class="h2">Woh <em>Pehli Baar</em></h2>
+      </div>
+      <div class="mini-grid" id="firsts"></div>
+
+      <div class="center" style="margin-top:64px">
+        <span class="eyebrow">then vs now</span>
+        <h2 class="h2">Pehla Din, <em>Aaj</em></h2>
+      </div>
+      <div class="compare">
+        <img id="thenImg" alt="Then" loading="lazy" />
+        <div class="now"><img id="nowImg" alt="Now" loading="lazy" /></div>
+        <div class="handle"></div>
+        <span class="lbl a">then</span><span class="lbl b">now</span>
+      </div>
+      <input type="range" min="0" max="100" value="50" id="compareRange" aria-label="Then vs now slider" />
+
+      <div class="center" style="margin-top:64px">
+        <span class="eyebrow">ek chhota sa imtihaan</span>
+        <h2 class="h2">Kitna Yaad Hai <em>Bittu?</em></h2>
+        <p class="lead">Paanch sawaal. Koi pressure nahi — bas pyaar se.</p>
+      </div>
+      <div class="glass quiz" id="quiz"></div>
+    </div>
+  </section>
+
+  <!-- LETTERS -->
+  <section class="section" id="letters">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow">dil ki baatein · sir ashish ki taraf se</span>
+        <h2 class="h2">Kuch Khat, Jo <em>Dil Se</em></h2>
+        <p class="lead">Chhe envelope — jab bhi dil kare, khol lena. Koi shart nahi, koi jaldi nahi.</p>
+      </div>
+
+      <div class="env-grid" id="envGrid"></div>
+
+      <div class="glass letter">
+        <p class="to">Meri Bittu,</p>
+        <p class="body" id="letterBody"></p>
+        <p class="sig">— Tumhara Ashish</p>
+        <p class="ps">P.S. — Tumhari khushi meri shart nahi, meri dua hai. Chahe tum kuch bhi chuno, main tumhe hamesha izzat se yaad rakhunga.</p>
+        <button class="btn ghost small" id="typeBtn" style="margin-top:14px">✍️ Typewriter se padho</button>
+      </div>
+
+      <div class="two-col" style="margin-top:22px">
+        <div class="glass jar">
+          <span class="tag">100 reasons · love jar</span>
+          <p id="reasonText">“Tumhari hansi — bas wahi kaafi thi.”</p>
+          <button class="btn small" id="reasonBtn" style="margin-top:14px">🎁 Ek aur reason nikaalo</button>
+        </div>
+        <div class="glass panel">
+          <span class="tag">my 7 vows</span>
+          <h4>Izzat, Sabr aur Pyaar</h4>
+          <div id="vows" style="margin-top:6px"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHAYARI VAULT -->
+  <section class="section" id="shayari">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow">reverse psychology · 100 shayari</span>
+        <h2 class="h2">Shayari <em>Vault</em> 🕊️</h2>
+        <p class="lead">Yahan koi shikayat nahi, koi shart nahi. Sirf sach, izzat aur thodi si khamoshi — tumhare faisle ka poora haq tumhare paas hai.</p>
+      </div>
+
+      <div class="shayari-tools">
+        <div class="chips" id="shayariCats"></div>
+        <input type="search" id="shayariSearch" placeholder="Shayari mein lafz dhoondo… (jaise: dua, yaad, azaad)" style="max-width:300px" />
+      </div>
+
+      <div class="flip-wrap">
+        <div class="flip" id="flip">
+          <div class="face front">
+            <span class="cat" id="shCat">Azaadi &amp; Self-Respect 🕊️</span>
+            <span class="num" id="shNum">01 / 100</span>
+            <p class="verse" id="shVerse">—</p>
+            <p class="note" style="margin-top:auto">card par tap karke palto</p>
+          </div>
+          <div class="face back">
+            <span class="cat">dil ki baat</span>
+            <p class="verse" id="shBack">Har shayari ke peeche ek hi sach hai — Ashish ne tumhe poore dil se chaha.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-actions">
+        <button class="btn ghost small" id="shPrev">❮ Pichhli</button>
+        <button class="btn small" id="shNext">Agli ❯</button>
+        <button class="btn ghost small" id="shCopy">📋 Copy</button>
+        <button class="btn ghost small" id="shFav">♡ Save</button>
+        <a class="btn ghost small" id="shWa" target="_blank" rel="noopener noreferrer">💬 Ashish ko bhejo</a>
+      </div>
+      <p class="note center" id="shMeta" style="margin-top:12px"></p>
+    </div>
+  </section>
+
+  <!-- PROPOSAL -->
+  <section class="section" id="proposal">
+    <div class="wrap" style="max-width:840px">
+      <div class="center">
+        <span class="eyebrow">the question · bina kisi pressure ke</span>
+        <h2 class="h2">Ek Sawaal, <em>Sirf Tumhare Liye</em></h2>
+        <p class="lead">Pehle mera haath pakdo — teen second. Uske baad jo dil kare, wahi karna.</p>
+      </div>
+
+      <div class="hold-wrap">
+        <button class="hold" id="holdBtn" aria-label="Hold my hand for 3 seconds">
+          <svg viewBox="0 0 150 150" aria-hidden="true">
+            <defs><linearGradient id="holdGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3c9c1"/><stop offset=".6" stop-color="#e79b95"/><stop offset="1" stop-color="#e6c08a"/></linearGradient></defs>
+            <circle class="bg" cx="75" cy="75" r="72"></circle>
+            <circle class="fg" id="holdRing" cx="75" cy="75" r="72"></circle>
+          </svg>
+          <span class="label"><b>Hold my hand</b>3 seconds · bina jaldi</span>
+        </button>
+        <p class="note" id="holdHint">tap &amp; hold karo</p>
+      </div>
+
+      <div class="glass proposal" id="proposalCard">
+        <span class="eyebrow">the only question that mattered</span>
+        <h3>Can Alka and Sir Ashish start a<br /><em>brand new chapter, together?</em></h3>
+        <p class="sub">Na purana chapter patch karke. Naya — do logon ka, jo ab sunna seekh gaye hain. Aur agar jawab “abhi nahi” hai, woh bhi poora jawab hai — main uska poora izzat karunga.</p>
+        <div class="proposal-actions">
+          <a class="btn" id="yesBtn" href="https://wa.me/917800291241?text=Yes%20Ashish%2C%20let%27s%20heal%20and%20begin%20again%20%E2%9D%A4%EF%B8%8F" target="_blank" rel="noopener noreferrer">Yes, Let's Heal &amp; Begin Again ❤️</a>
+          <a class="btn ghost" id="talkBtn" href="https://wa.me/917800291241?text=Hi%20Ashish%2C%20let%27s%20talk%20for%20a%20bit%20%E2%98%95" target="_blank" rel="noopener noreferrer">Let's Just Talk First ☕</a>
+          <button class="btn ghost" id="timeBtn">Take Your Time 🕊️</button>
+        </div>
+        <div class="reassure" id="reassure">
+          <b>Take all the time you need, Bittu.</b>
+          My heart is always ready for you. No follow-ups, no deadlines, no pressure dressed up as love. Main wait karna jaanta hoon — izzat ke saath.
+        </div>
+
+        <div class="two-col" style="margin-top:24px;text-align:left">
+          <div class="panel" style="border:1px solid var(--line);border-radius:16px">
+            <span class="tag">our future bucket list</span>
+            <h4>Jo hum abhi baaki hain</h4>
+            <div id="bucket"></div>
+          </div>
+          <div class="panel" style="border:1px solid var(--line);border-radius:16px">
+            <span class="tag">mood selector</span>
+            <h4>How are you feeling right now, Alka?</h4>
+            <div class="moods" id="moods"></div>
+            <p class="note" id="moodNote">koi bhi chuno — sab theek hai</p>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top:14px;border:1px solid var(--line);border-radius:16px;text-align:left">
+          <span class="tag">write whatever is in your heart</span>
+          <textarea id="heartText" rows="4" placeholder="Bittu, yahan jo bhi likhna hai likho… main padhunga, bina kisi jawab ki demand ke."></textarea>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+            <button class="btn small" id="sendHeart">💬 WhatsApp par bhejo</button>
+            <span class="note" style="margin:0;align-self:center">+91 78002 91241</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DUA / FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="glow-divider" style="height:1px;background:linear-gradient(90deg,transparent,rgba(231,155,149,.4),transparent)"></div>
+      <h2 class="h2" style="margin-top:30px">Hamesha Khush Rehna, <em>Bittu</em></h2>
+      <p class="quote">“Waqt guzar jayega, mausam bhi badal jayenge,<br />Par tere naam ke diye is dil mein hamesha jalte rahenge.”</p>
+      <div class="names"><span>sir ashish</span><span>❤</span><span>alka · bittu</span></div>
+      <p class="note">4 saal · ek pavitr bandhan · dil se banaya gaya</p>
+      <button class="easter" id="easterBtn">✦ ek chhoti si baat</button>
+      <p class="easter-note" id="easterNote">Agar tum yahan tak aa gayi ho, toh matlab kuch toh hai. Aur agar kuch nahi bhi hai — phir bhi tumhari khushi meri dua hai. 🤍</p>
+    </div>
+  </footer>
+</main>
+
+<!-- AUDIO BAR -->
+<div class="yt-hidden" aria-hidden="true"><div id="ytPlayer"></div></div>
+<div id="audiobar">
+  <div class="bar">
+    <button class="play-btn" id="barPlay" aria-label="Play/Pause" style="width:40px;height:40px">▶</button>
+    <div class="title"><b id="barTitle">Mere Mehboob Qayamat Hogi</b><span id="barSub">track 01 / 71</span></div>
+    <span class="bars" id="barBars"><i></i><i></i><i></i><i></i></span>
+    <button class="icon-btn" id="barPrev" aria-label="Previous">❮</button>
+    <button class="icon-btn" id="barNext" aria-label="Next">❯</button>
+    <button class="icon-btn" id="barMute" aria-label="Mute">🔊</button>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div class="grid-modal" id="gridModal" role="dialog" aria-modal="true" aria-label="All memories">
+  <div class="grid-head"><div><span class="pill">yaadon ka pitara</span><p style="font-family:var(--serif);font-size:20px;margin-top:6px"><span id="gridCount">71</span> photos · <span id="gridCount2">71</span> gaane</p></div><button class="icon-btn" id="gridClose" aria-label="Close">✕</button></div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Memory">
+  <button class="icon-btn lb-close" id="lbClose" aria-label="Close">✕</button>
+  <div class="lb-inner">
+    <img class="lb-img" id="lbImg" alt="Memory" />
+    <div class="lb-meta">
+      <p class="track-line" id="lbTrack"></p>
+      <p class="song" id="lbSong" style="font-size:22px"></p>
+      <p class="caption" id="lbCaption" style="max-width:none"></p>
+      <div class="controls">
+        <button class="icon-btn" id="lbPrev" aria-label="Previous">❮</button>
+        <button class="icon-btn" id="lbNext" aria-label="Next">❯</button>
+        <span class="note" style="margin:0">double-tap / click photo to zoom</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="movie" id="movie" role="dialog" aria-modal="true" aria-label="Cinematic movie">
+  <div class="movie-stage">
+    <img id="movieImg" alt="Memory" />
+    <div class="movie-scrim"></div>
+    <button class="icon-btn movie-close" id="movieClose" aria-label="Close movie">✕</button>
+    <div class="movie-meta"><h3 id="movieSong">—</h3><p id="movieMeta"></p></div>
+  </div>
+</div>
+
+<div class="modal" id="envModal" role="dialog" aria-modal="true" aria-label="Letter">
+  <div style="max-width:640px;margin:8vh auto">
+    <div class="glass letter">
+      <div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
+        <span class="tag" style="margin:0">open when…</span>
+        <button class="icon-btn" id="envClose" aria-label="Close">✕</button>
+      </div>
+      <p class="to" id="envTitle" style="font-size:22px;margin-top:8px"></p>
+      <p class="body" id="envBody" style="white-space:pre-line"></p>
+      <p class="sig" style="font-size:26px">— Tumhara Ashish</p>
+    </div>
+  </div>
+</div>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+<div class="toast" id="toast"></div>
+<script>

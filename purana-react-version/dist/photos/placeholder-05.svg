@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Photo placeholder THE LESSON">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1029"/>
+      <stop offset="0.55" stop-color="#131c3d"/>
+      <stop offset="1" stop-color="#161220"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="38%" r="62%">
+      <stop offset="0" stop-color="#c3b2e6" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#c3b2e6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="v" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#030510" stop-opacity="0"/>
+      <stop offset="1" stop-color="#030510" stop-opacity="0.65"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#glow)"/>
+  <g fill="none" stroke="#c3b2e6" stroke-opacity="0.55" stroke-width="1.4">
+    <path transform="translate(292 156) scale(9)" d="M12 21C-1 12 2 3 8 3c2.5 0 4 2 4 4 0-2 1.5-4 4-4 6 0 9 9-4 18Z"/>
+  </g>
+  <g stroke="#c3b2e6" stroke-opacity="0.35" stroke-width="1" fill="none">
+    <path d="M40 40h34M40 40v34M760 40h-34M760 40v34M40 560h34M40 560v-34M760 560h-34M760 560v-34"/>
+  </g>
+  <rect width="800" height="600" fill="url(#v)"/>
+  <text x="400" y="452" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="27" font-style="italic" fill="#f7f1ea" fill-opacity="0.66">Add your photograph here</text>
+  <text x="400" y="487" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" letter-spacing="5" fill="#f7f1ea" fill-opacity="0.32">MEMORY 05 · THE LESSON</text>
+</svg>
