@@ -162,8 +162,8 @@ main{position:relative;z-index:1}
 .movie-meta p{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-dim);margin-top:6px}
 .movie-close{position:absolute;top:14px;right:14px;z-index:3}
 /* hidden youtube player */
-.yt-hidden{position:fixed;left:-9999px;bottom:0;width:2px;height:2px;overflow:hidden;opacity:0;pointer-events:none;z-index:-1}
-.yt-hidden iframe,.yt-hidden #ytPlayer{width:2px!important;height:2px!important;border:0}
+.yt-hidden{position:fixed;right:4px;bottom:4px;width:200px;height:200px;opacity:0.01;pointer-events:none;z-index:-1}
+.yt-hidden iframe,.yt-hidden #ytPlayer{width:200px!important;height:200px!important;border:0}
 /* audio bar */
 #audiobar{position:fixed;left:0;right:0;bottom:0;z-index:110;display:none;justify-content:center;padding:10px 12px calc(10px + env(safe-area-inset-bottom))}
 #audiobar.on{display:flex}
